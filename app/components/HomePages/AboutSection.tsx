@@ -5,60 +5,61 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TextReveal from '../Atoms/TextReveal';
+
+const STATS = [
+  { value: '2+', label: 'Years Experience', suffix: '' },
+  { value: '20+', label: 'Projects Delivered', suffix: '' },
+  { value: '15+', label: 'Technologies', suffix: '' },
+  { value: '100%', label: 'Client Satisfaction', suffix: '' },
+];
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const imgRevealRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      gsap.from('.about-title', {
+      gsap.from('.about-label', {
         scrollTrigger: {
-          trigger: '.about-title',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
-
-      gsap.from('.about-line', {
-        scrollTrigger: {
-          trigger: '.about-line',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-        scaleX: 0,
-        duration: 1,
-        ease: 'power3.inOut',
-        transformOrigin: 'left center',
-      });
-
-      gsap.from('.about-text', {
-        scrollTrigger: {
-          trigger: '.about-text',
+          trigger: sectionRef.current,
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
-        y: 40,
+        x: -30,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
+        duration: 0.6,
         ease: 'power2.out',
       });
+
+      if (imgRevealRef.current) {
+        gsap.fromTo(
+          imgRevealRef.current,
+          { scaleX: 1, transformOrigin: 'left center' },
+          {
+            scaleX: 0,
+            duration: 1.2,
+            ease: 'power3.inOut',
+            scrollTrigger: {
+              trigger: imageRef.current,
+              start: 'top 75%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
 
       gsap.from(imageRef.current, {
         scrollTrigger: {
           trigger: imageRef.current,
-          start: 'top 80%',
+          start: 'top 75%',
           toggleActions: 'play none none reverse',
         },
-        x: -100,
-        opacity: 0,
-        duration: 1,
+        scale: 1.3,
+        duration: 1.4,
+        delay: 0.3,
         ease: 'power3.out',
       });
 
@@ -69,10 +70,10 @@ export default function AboutSection() {
             start: 'top 85%',
             toggleActions: 'play none none reverse',
           },
-          y: 50,
+          y: 60,
           opacity: 0,
-          duration: 0.6,
-          stagger: 0.15,
+          duration: 0.7,
+          stagger: 0.12,
           ease: 'back.out(1.4)',
         });
       }
@@ -86,65 +87,79 @@ export default function AboutSection() {
       id="about"
       className="relative overflow-hidden bg-black px-6 py-24 lg:px-20 lg:py-36"
     >
+      <div className="absolute left-10 top-10 hidden lg:block">
+        <div className="about-label flex items-center gap-3 text-white/25">
+          <div className="h-px w-8 bg-white/20" />
+          <span className="text-[10px] font-medium uppercase tracking-[0.5em]">02 / About</span>
+        </div>
+      </div>
+
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16">
-          <p className="about-title mb-3 text-sm font-medium uppercase tracking-[0.3em] text-primary">
-            About Me
+        <div className="mb-20">
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+            Who I Am
           </p>
-          <h2 className="about-title text-4xl font-bold text-white md:text-5xl">
-            Turning ideas into
-            <br />
-            <span className="text-primary">digital experiences</span>
-          </h2>
-          <div className="about-line mt-6 h-[2px] w-24 rounded-full bg-primary/60" />
+          <TextReveal
+            as="h2"
+            className="text-4xl font-bold text-white md:text-6xl lg:text-7xl"
+            stagger={0.03}
+          >
+            Turning ideas into digital experiences
+          </TextReveal>
+          <div className="mt-8 h-px w-20 bg-primary/40" />
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <div ref={imageRef} className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <div className="grid gap-16 lg:grid-cols-5 lg:gap-24">
+          <div ref={imageRef} className="relative aspect-[4/5] overflow-hidden rounded-3xl lg:col-span-2">
+            <div
+              ref={imgRevealRef}
+              className="absolute inset-0 z-10 bg-black"
+              style={{ transformOrigin: 'left center' }}
+            />
             <Image
               src="/Images/bgmain.png"
               alt="About"
               fill
-              className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+              className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 hover:opacity-100" />
           </div>
 
-          <div className="flex flex-col justify-center">
-            <p className="about-text mb-8 text-lg leading-relaxed text-white/60">
-              I&apos;m a passionate Frontend Developer with a keen eye for design
-              and a deep love for creating seamless user experiences. With
-              expertise in modern web technologies, I transform complex problems
-              into elegant, performant solutions.
-            </p>
+          <div className="flex flex-col justify-center lg:col-span-3">
+            <div className="space-y-6">
+              <p className="text-lg leading-relaxed text-white/55">
+                I&apos;m a passionate Frontend Developer with a keen eye for design
+                and a deep love for creating seamless user experiences. With
+                expertise in modern web technologies, I transform complex problems
+                into elegant, performant solutions.
+              </p>
 
-            <p className="about-text mb-8 text-lg leading-relaxed text-white/60">
-              My approach combines technical precision with creative thinking.
-              I believe great software is not just about code &mdash; it&apos;s
-              about understanding users, anticipating their needs, and crafting
-              interfaces that feel intuitive and delightful.
-            </p>
+              <p className="text-lg leading-relaxed text-white/55">
+                My approach combines technical precision with creative thinking.
+                I believe great software is not just about code — it&apos;s
+                about understanding users, anticipating their needs, and crafting
+                interfaces that feel intuitive and delightful.
+              </p>
 
-            <p className="about-text mb-12 text-lg leading-relaxed text-white/60">
-              When I&apos;m not coding, you&apos;ll find me exploring new
-              technologies, contributing to open-source projects, or enjoying a
-              good cup of coffee while sketching UI ideas.
-            </p>
+              <p className="text-lg leading-relaxed text-white/55">
+                When I&apos;m not coding, you&apos;ll find me exploring new
+                technologies, contributing to open-source projects, or enjoying a
+                good cup of coffee while sketching UI ideas.
+              </p>
+            </div>
 
             <div
               ref={statsRef}
-              className="grid grid-cols-3 gap-6 border-t border-white/10 pt-10"
+              className="mt-14 grid grid-cols-2 gap-8 border-t border-white/[0.06] pt-12 sm:grid-cols-4"
             >
-              {[
-                { value: '2+', label: 'Years Exp' },
-                { value: '20+', label: 'Projects' },
-                { value: '15+', label: 'Tech Stack' },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-3xl font-bold text-primary md:text-4xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-sm uppercase tracking-wider text-white/40">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="group">
+                  <div className="mb-2 flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-white transition-colors group-hover:text-primary md:text-5xl">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.15em] text-white/25 transition-colors group-hover:text-white/40">
                     {stat.label}
                   </p>
                 </div>
