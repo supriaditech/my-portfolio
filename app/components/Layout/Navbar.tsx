@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
@@ -180,8 +181,8 @@ export default function Navbar() {
             onClick={(e) => handleNavClick(e, '#home')}
             className="group relative"
           >
-            <span className="from-primary to-primary relative z-10 bg-gradient-to-r via-amber-500 bg-[length:200%_100%] bg-clip-text text-xl font-bold text-transparent transition-all duration-500 group-hover:bg-right">
-              Portfolio
+            <span className="from-primary to-primary relative z-10 bg-gradient-to-r via-sky-400 bg-[length:200%_100%] bg-clip-text text-lg font-bold text-transparent transition-all duration-500 group-hover:bg-right sm:text-xl">
+              Supriadi
             </span>
           </a>
 
@@ -208,6 +209,27 @@ export default function Navbar() {
                 </a>
               );
             })}
+            <a
+              href="/Supriadi-CV-2026.pdf"
+              download
+              className="border-primary/30 text-primary hover:border-primary hover:bg-primary/10 ml-4 flex items-center gap-2 rounded-full border px-5 py-2 text-[11px] font-semibold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(145,59,40,0.15)]"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              CV
+            </a>
           </div>
 
           <button

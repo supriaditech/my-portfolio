@@ -1,24 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextReveal from '../Atoms/TextReveal';
 
-const STATS = [
-  { value: '2+', label: 'Years Experience', suffix: '' },
-  { value: '20+', label: 'Projects Delivered', suffix: '' },
-  { value: '15+', label: 'Technologies', suffix: '' },
-  { value: '100%', label: 'Client Satisfaction', suffix: '' },
-];
-
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const imgRevealRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -33,50 +22,6 @@ export default function AboutSection() {
         duration: 0.6,
         ease: 'power2.out',
       });
-
-      if (imgRevealRef.current) {
-        gsap.fromTo(
-          imgRevealRef.current,
-          { scaleX: 1, transformOrigin: 'left center' },
-          {
-            scaleX: 0,
-            duration: 1.2,
-            ease: 'power3.inOut',
-            scrollTrigger: {
-              trigger: imageRef.current,
-              start: 'top 75%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      }
-
-      gsap.from(imageRef.current, {
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-        scale: 1.3,
-        duration: 1.4,
-        delay: 0.3,
-        ease: 'power3.out',
-      });
-
-      if (statsRef.current) {
-        gsap.from(statsRef.current.children, {
-          scrollTrigger: {
-            trigger: statsRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-          y: 60,
-          opacity: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: 'back.out(1.4)',
-        });
-      }
     },
     { scope: sectionRef }
   );
@@ -87,83 +32,109 @@ export default function AboutSection() {
       id="about"
       className="relative overflow-hidden bg-black px-6 py-24 lg:px-20 lg:py-36"
     >
-      <div className="absolute left-10 top-10 hidden lg:block">
+      <div className="absolute top-10 left-10 hidden lg:block">
         <div className="about-label flex items-center gap-3 text-white/25">
           <div className="h-px w-8 bg-white/20" />
-          <span className="text-[10px] font-medium uppercase tracking-[0.5em]">02 / About</span>
+          <span className="text-[10px] font-medium tracking-[0.5em] uppercase">
+            02 / About
+          </span>
         </div>
       </div>
 
       <div className="mx-auto max-w-7xl">
         <div className="mb-20">
-          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+          <p className="text-primary mb-4 text-[11px] font-semibold tracking-[0.3em] uppercase">
             Who I Am
           </p>
           <TextReveal
             as="h2"
-            className="text-4xl font-bold text-white md:text-6xl lg:text-7xl"
+            className="text-4xl font-bold text-white md:text-6xl"
             stagger={0.03}
           >
-            Turning ideas into digital experiences
+            Professional Summary
           </TextReveal>
-          <div className="mt-8 h-px w-20 bg-primary/40" />
+          <div className="bg-primary/40 mt-8 h-px w-20" />
         </div>
 
-        <div className="grid gap-16 lg:grid-cols-5 lg:gap-24">
-          <div ref={imageRef} className="relative aspect-[4/5] overflow-hidden rounded-3xl lg:col-span-2">
-            <div
-              ref={imgRevealRef}
-              className="absolute inset-0 z-10 bg-black"
-              style={{ transformOrigin: 'left center' }}
-            />
-            <Image
-              src="/Images/bgmain.png"
-              alt="About"
-              fill
-              className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 hover:opacity-100" />
-          </div>
-
-          <div className="flex flex-col justify-center lg:col-span-3">
-            <div className="space-y-6">
-              <p className="text-lg leading-relaxed text-white/55">
-                I&apos;m a passionate Frontend Developer with a keen eye for design
-                and a deep love for creating seamless user experiences. With
-                expertise in modern web technologies, I transform complex problems
-                into elegant, performant solutions.
+        <div className="grid gap-20 lg:grid-cols-5">
+          <div className="space-y-8 lg:col-span-3">
+            <div className="space-y-5 text-lg leading-relaxed text-white/55">
+              <p>
+                Frontend Developer with{' '}
+                <span className="font-semibold text-white/80">
+                  3 years of experience
+                </span>{' '}
+                specializing in the{' '}
+                <span className="text-primary/80">
+                  Next.js, React Native, and TypeScript
+                </span>{' '}
+                ecosystem, supported by robust Fullstack (NestJS) capabilities.
               </p>
-
-              <p className="text-lg leading-relaxed text-white/55">
-                My approach combines technical precision with creative thinking.
-                I believe great software is not just about code — it&apos;s
-                about understanding users, anticipating their needs, and crafting
-                interfaces that feel intuitive and delightful.
+              <p>
+                Masters modern frontend architecture including{' '}
+                <span className="text-white/80">
+                  state management (Zustand)
+                </span>
+                ,{' '}
+                <span className="text-white/80">
+                  real-time data fetching optimization (SWR)
+                </span>
+                , and efficient{' '}
+                <span className="text-white/80">Git Flow strategies</span>.
               </p>
-
-              <p className="text-lg leading-relaxed text-white/55">
-                When I&apos;m not coding, you&apos;ll find me exploring new
-                technologies, contributing to open-source projects, or enjoying a
-                good cup of coffee while sketching UI ideas.
+              <p>
+                Proven <span className="text-primary/80">DevOps expertise</span>{' '}
+                (Docker/VPS/CI/CD) in building AI-based Education Platforms
+                (OpenAI) and Payment Gateway integrations.
+              </p>
+              <p>
+                Currently focused on{' '}
+                <span className="text-white/80">
+                  code refactoring and system scalability
+                </span>{' '}
+                enhancements at PT. Permata Azzuri Sehat.
               </p>
             </div>
+          </div>
 
-            <div
-              ref={statsRef}
-              className="mt-14 grid grid-cols-2 gap-8 border-t border-white/[0.06] pt-12 sm:grid-cols-4"
-            >
-              {STATS.map((stat) => (
-                <div key={stat.label} className="group">
-                  <div className="mb-2 flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-white transition-colors group-hover:text-primary md:text-5xl">
-                      {stat.value}
-                    </span>
-                  </div>
-                  <p className="text-xs uppercase tracking-[0.15em] text-white/25 transition-colors group-hover:text-white/40">
-                    {stat.label}
+          <div className="lg:col-span-2">
+            <div className="rounded-3xl border border-white/[0.04] bg-white/[0.01] p-8 backdrop-blur-sm">
+              <h3 className="mb-6 text-lg font-bold text-white">Education</h3>
+
+              <div className="space-y-6">
+                <div>
+                  <p className="text-sm font-semibold text-white/80">
+                    Universitas Negeri Medan
+                  </p>
+                  <p className="mt-0.5 text-xs text-white/35">
+                    Bachelor of Education in Informatics &amp; Computer
+                    Engineering
+                  </p>
+                  <p className="mt-1 text-xs text-white/20">
+                    July 2020 &ndash; June 2024
                   </p>
                 </div>
-              ))}
+
+                <div className="border-t border-white/[0.04] pt-4">
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-primary text-4xl font-bold">
+                      3.71
+                    </span>
+                    <span className="text-xs text-white/25">GPA / 4.00</span>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/[0.04] pt-4">
+                  <p className="mb-2 text-[10px] font-semibold tracking-[0.3em] text-white/20 uppercase">
+                    Thesis
+                  </p>
+                  <p className="text-sm leading-relaxed text-white/40">
+                    Development of an Artificial Intelligence-Based Android
+                    Application for Adaptive Learning Support Assessment
+                    Systems.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

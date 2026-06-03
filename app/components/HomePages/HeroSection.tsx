@@ -175,7 +175,7 @@ export default function HeroSection() {
             className="absolute -top-20 -left-20 h-[60vw] w-[60vw] rounded-full opacity-20 blur-[100px]"
             style={{
               background:
-                'radial-gradient(circle, #913B28 0%, transparent 70%)',
+                'radial-gradient(circle, #6366F1 0%, transparent 70%)',
             }}
           />
         </div>
@@ -206,42 +206,40 @@ export default function HeroSection() {
           <div className="max-w-4xl">
             <span className="hero-badge border-primary/30 bg-primary/5 text-primary mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-semibold tracking-[0.3em] uppercase">
               <span className="bg-primary h-1.5 w-1.5 animate-pulse rounded-full" />
-              Available for work
+              Available for projects
             </span>
 
             <div className="hero-line from-primary mb-8 h-px w-24 bg-gradient-to-r to-transparent" />
 
             <p className="hero-greeting font-montserrat text-lg font-medium tracking-[0.3em] text-white/50 uppercase md:text-xl">
-              Hey, I&apos;m a
+              Hey, I&apos;m
             </p>
 
             <TextRepulsion
-              text="Frontend"
+              text="Supriadi"
               strength={1400}
               radius={280}
-              className="font-montserrat text-7xl leading-[1.05] font-extrabold text-white md:text-9xl"
+              className="font-montserrat text-5xl leading-[1.05] font-extrabold text-white sm:text-7xl md:text-9xl"
             />
-            <TextRepulsion
-              text="Developer"
-              strength={1400}
-              radius={280}
-              className="font-montserrat text-primary text-7xl leading-[1.05] font-extrabold md:text-9xl"
-            />
+
+            <p className="hero-greeting font-montserrat text-primary/60 text-base font-medium tracking-[0.3em] uppercase sm:text-lg md:text-xl">
+              Frontend Developer
+            </p>
 
             <div className="hero-greeting mt-8 max-w-xl">
               <TextReveal
                 as="p"
-                className="text-base leading-relaxed text-white/50 md:text-lg"
+                className="text-sm leading-relaxed text-white/50 sm:text-base md:text-lg"
                 delay={0.5}
                 stagger={0.02}
               >
-                Crafting immersive digital experiences with modern web
-                technologies. Bridging design and code to build products that
-                matter.
+                3+ years specializing in Next.js, React Native &amp; TypeScript.
+                Fullstack-capable with NestJS, AI integration (OpenAI), and
+                DevOps expertise.
               </TextReveal>
             </div>
 
-            <div className="hero-cta mt-12 flex flex-wrap items-center gap-6">
+            <div className="hero-cta mt-10 flex flex-wrap items-center gap-4 sm:mt-12 sm:gap-6">
               <Magnetic strength={0.3}>
                 <a
                   href="#projects"
@@ -251,9 +249,9 @@ export default function HeroSection() {
                       .querySelector('#projects')
                       ?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="group bg-primary relative flex items-center gap-3 overflow-hidden rounded-full px-10 py-4"
+                  className="group bg-primary relative flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 sm:gap-3 sm:px-10 sm:py-4"
                 >
-                  <span className="relative z-10 text-sm font-semibold tracking-[0.2em] text-white uppercase">
+                  <span className="relative z-10 text-xs font-semibold tracking-[0.2em] text-white uppercase sm:text-sm">
                     View My Work
                   </span>
                   <span className="relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1">
@@ -265,16 +263,42 @@ export default function HeroSection() {
 
               <Magnetic strength={0.3}>
                 <a
-                  href="#contact"
+                  href="#experience"
                   onClick={(e) => {
                     e.preventDefault();
                     document
-                      .querySelector('#contact')
+                      .querySelector('#experience')
                       ?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="relative text-sm font-semibold tracking-[0.2em] text-white/40 uppercase transition-colors hover:text-white"
+                  className="relative text-xs font-semibold tracking-[0.2em] text-white/40 uppercase transition-colors hover:text-white sm:text-sm"
                 >
-                  Get in Touch
+                  Experience
+                  <span className="bg-primary absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full" />
+                </a>
+              </Magnetic>
+
+              <Magnetic strength={0.3}>
+                <a
+                  href="/Supriadi-CV-2026.pdf"
+                  download
+                  className="text-primary/60 hover:text-primary relative flex items-center gap-1.5 text-xs font-semibold tracking-[0.2em] uppercase transition-colors sm:gap-2 sm:text-sm"
+                >
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="sm:h-3.5 sm:w-3.5"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download CV
                   <span className="bg-primary absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full" />
                 </a>
               </Magnetic>

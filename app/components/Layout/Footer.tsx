@@ -34,8 +34,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h3 className="footer-item bg-gradient-to-r from-primary to-amber-400 bg-clip-text text-3xl font-bold text-transparent">
-              Portfolio
+            <h3 className="footer-item from-primary to-primary bg-gradient-to-r via-sky-400 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl">
+              Supriadi
             </h3>
             <p className="footer-item mt-2 text-sm text-white/25">
               Crafting digital experiences with code &amp; creativity.
@@ -47,9 +47,11 @@ export default function Footer() {
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
+                document
+                  .querySelector('#home')
+                  ?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-xs font-semibold uppercase tracking-[0.3em] text-white/25 transition-colors hover:text-primary"
+              className="hover:text-primary text-xs font-semibold tracking-[0.3em] text-white/25 uppercase transition-colors"
             >
               Back to top &uarr;
             </a>
@@ -62,13 +64,23 @@ export default function Footer() {
           </p>
 
           <div className="footer-item flex items-center gap-8">
-            {['GitHub', 'LinkedIn', 'Twitter', 'Dribbble'].map((social) => (
+            {[
+              { name: 'GitHub', href: 'https://github.com/supriaditech' },
+              {
+                name: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/supriaditech/',
+              },
+              { name: 'WhatsApp', href: 'https://wa.me/6282277280453' },
+              { name: 'Dribbble', href: '#' },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
-                className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/20 transition-colors hover:text-primary"
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary text-[11px] font-medium tracking-[0.2em] text-white/20 uppercase transition-colors"
               >
-                {social}
+                {social.name}
               </a>
             ))}
           </div>

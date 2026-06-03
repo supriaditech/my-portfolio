@@ -5,73 +5,64 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextReveal from '../Atoms/TextReveal';
-import Magnetic from '../Atoms/Magnetic';
 
 const PROJECTS = [
   {
-    title: 'E-Commerce Platform',
-    category: 'Full-Stack Development',
-    description: 'A modern e-commerce platform with real-time inventory, seamless checkout, and admin dashboard.',
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-    year: '2025',
+    title: 'klinikme.com',
+    category: 'Healthcare Platform',
+    description:
+      'Full-scale clinic management with laboratory modules, SWR real-time data, and Atomic Design architecture.',
+    tags: ['Next.js', 'TypeScript', 'Zustand', 'SWR'],
+    link: 'https://klinikme.com',
   },
   {
-    title: 'SaaS Dashboard',
-    category: 'Frontend Architecture',
-    description: 'Analytics dashboard with real-time data visualization, team collaboration, and dark mode.',
-    tags: ['React', 'D3.js', 'Tailwind', 'WebSocket'],
-    year: '2025',
+    title: 'ModiMinds',
+    category: 'EdTech AI Platform',
+    description:
+      'AI-powered education platform with Smart Question Generator using OpenAI API and NestJS microservices.',
+    tags: ['NestJS', 'OpenAI', 'Docker', 'Next.js'],
+    link: '#',
   },
   {
-    title: 'Social Media App',
-    category: 'Full-Stack Development',
-    description: 'Feature-rich social platform with real-time chat, stories, and AI-powered recommendations.',
-    tags: ['Next.js', 'GraphQL', 'Redis', 'AWS'],
-    year: '2024',
+    title: 'seindotravel.com',
+    category: 'Travel & E-Commerce',
+    description:
+      'Travel booking platform with Midtrans/Xendit payment integration and real-time status updates.',
+    tags: ['Next.js', 'SWR', 'Midtrans', 'React Native'],
+    link: 'https://seindotravel.com',
   },
   {
-    title: 'Portfolio CMS',
-    category: 'Frontend Development',
-    description: 'Headless CMS-driven portfolio with dynamic page builder and advanced GSAP animations.',
-    tags: ['Next.js', 'GSAP', 'Sanity', 'Vercel'],
-    year: '2024',
+    title: 'PSP3USU',
+    category: 'Faculty Management',
+    description:
+      'Digital attendance system with Geofencing (OpenStreetMap), task management, and CI/CD.',
+    tags: ['NestJS', 'Docker', 'GitHub Actions', 'VPS'],
+    link: '#',
   },
   {
-    title: 'FinTech Mobile App',
-    category: 'UI/UX Engineering',
-    description: 'Banking application with biometric auth, real-time transactions, and investment tracking.',
-    tags: ['React Native', 'Node.js', 'MongoDB', 'Plaid'],
-    year: '2024',
+    title: 'DarkoHr App',
+    category: 'HR Mobile App',
+    description:
+      'React Native HR app with Splash Screen, Tour App, and REST APIs for Organization modules.',
+    tags: ['React Native', 'Laravel', 'REST API'],
+    link: '#',
+  },
+  {
+    title: 'permataazzurisehat.com',
+    category: 'Company Profile',
+    description:
+      'Modernized company profile with TypeScript migration, Next.js upgrade, and enhanced security.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    link: 'https://permataazzurisehat.com',
   },
 ];
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useGSAP(
     () => {
-      if (!trackRef.current || !pinRef.current) return;
-
-      const cards = cardsRef.current.filter(Boolean);
-      const totalScroll = trackRef.current.scrollWidth - window.innerWidth;
-
-      gsap.to(trackRef.current, {
-        x: -totalScroll,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: pinRef.current,
-          start: 'top top',
-          end: `+=${totalScroll}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
       gsap.from('.projects-label', {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -84,21 +75,21 @@ export default function ProjectsSection() {
         ease: 'power2.out',
       });
 
-      cards.forEach((card, i) => {
+      cardRefs.current.forEach((card, i) => {
+        if (!card) return;
         gsap.fromTo(
           card,
-          { y: 80, opacity: 0, rotateX: 10 },
+          { y: 60, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            rotateX: 0,
-            duration: 0.9,
-            delay: 0.12 * i,
+            duration: 0.7,
+            delay: 0.1 * i,
             ease: 'power3.out',
             scrollTrigger: {
-              trigger: pinRef.current,
-              start: 'top top',
-              toggleActions: 'play none none reset',
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
             },
           }
         );
@@ -110,38 +101,26 @@ export default function ProjectsSection() {
   const { contextSafe } = useGSAP({ scope: sectionRef });
 
   const handleCardEnter = contextSafe((index: number) => {
-    const card = cardsRef.current[index];
+    const card = cardRefs.current[index];
     if (!card) return;
     gsap.to(card, {
-      y: -16,
-      scale: 1.03,
-      borderColor: 'rgba(145, 59, 40, 0.4)',
-      boxShadow: '0 20px 60px rgba(145, 59, 40, 0.1)',
-      duration: 0.5,
-      ease: 'power3.out',
-    });
-    gsap.to(card.querySelector('.card-arrow') as Element, {
-      x: 6,
-      opacity: 1,
-      duration: 0.3,
+      y: -6,
+      borderColor: 'rgba(99, 102, 241, 0.3)',
+      boxShadow: '0 12px 40px rgba(99, 102, 241, 0.08)',
+      duration: 0.35,
+      ease: 'power2.out',
     });
   });
 
   const handleCardLeave = contextSafe((index: number) => {
-    const card = cardsRef.current[index];
+    const card = cardRefs.current[index];
     if (!card) return;
     gsap.to(card, {
       y: 0,
-      scale: 1,
-      borderColor: 'rgba(255, 255, 255, 0.05)',
+      borderColor: 'rgba(255, 255, 255, 0.06)',
       boxShadow: 'none',
-      duration: 0.5,
-      ease: 'power3.out',
-    });
-    gsap.to(card.querySelector('.card-arrow') as Element, {
-      x: 0,
-      opacity: 0.4,
-      duration: 0.3,
+      duration: 0.35,
+      ease: 'power2.out',
     });
   });
 
@@ -149,103 +128,113 @@ export default function ProjectsSection() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative overflow-hidden bg-black"
+      className="relative overflow-hidden bg-black px-6 py-20 lg:px-20 lg:py-32"
     >
-      <div
-        ref={pinRef}
-        className="h-dvh w-full"
-        style={{ overflow: 'hidden' }}
-      >
-        <div className="absolute left-10 top-10 z-30 hidden lg:block">
-          <div className="projects-label flex items-center gap-3 text-white/25">
-            <div className="h-px w-8 bg-white/20" />
-            <span className="text-[10px] font-medium uppercase tracking-[0.5em]">04 / Projects</span>
-          </div>
+      <div className="absolute top-10 left-10 hidden lg:block">
+        <div className="projects-label flex items-center gap-3 text-white/20">
+          <div className="h-px w-8 bg-white/15" />
+          <span className="text-[10px] font-medium tracking-[0.5em] uppercase">
+            05 / Projects
+          </span>
         </div>
+      </div>
 
-        <div className="absolute left-0 top-0 z-20 p-6 lg:p-20">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-16">
+          <p className="text-primary mb-3 text-[11px] font-semibold tracking-[0.3em] uppercase">
             Selected Work
           </p>
           <TextReveal
             as="h2"
-            className="text-4xl font-bold text-white md:text-6xl"
-            stagger={0.04}
+            className="text-3xl font-bold text-white sm:text-5xl"
+            stagger={0.03}
           >
             Featured Projects
           </TextReveal>
-          <div className="mt-6 h-px w-16 bg-primary/50" />
         </div>
 
-        <div
-          ref={trackRef}
-          className="flex h-full items-center"
-          style={{ width: 'max-content', paddingLeft: '4vw', paddingRight: '4vw' }}
-        >
+        <div className="space-y-4">
           {PROJECTS.map((project, i) => (
-            <div
+            <a
               key={project.title}
               ref={(el) => {
-                cardsRef.current[i] = el;
+                cardRefs.current[i] = el;
               }}
+              href={project.link}
+              target={project.link !== '#' ? '_blank' : undefined}
+              rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
               onMouseEnter={() => handleCardEnter(i)}
               onMouseLeave={() => handleCardLeave(i)}
-              className="group relative mr-8 flex h-[420px] w-[380px] flex-shrink-0 cursor-pointer flex-col justify-end overflow-hidden rounded-3xl border border-white/[0.05] bg-zinc-900/60 p-8 backdrop-blur-md transition-colors md:h-[500px] md:w-[440px]"
+              className="group flex flex-col gap-6 rounded-2xl border border-white/[0.06] bg-white/[0.01] p-5 backdrop-blur-sm transition-colors hover:bg-white/[0.03] sm:flex-row sm:items-center sm:gap-10 sm:p-7"
             >
-              <div className="absolute left-8 top-8 flex items-center gap-3">
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/25">
-                  {project.year}
+              <div className="flex items-center gap-4 sm:w-48 sm:flex-shrink-0">
+                <span className="text-2xl font-black text-white/10 tabular-nums sm:text-3xl">
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-                <div className="h-px w-6 bg-white/10" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-primary">
+                <span className="rounded-full border border-white/10 px-3 py-0.5 text-[10px] font-semibold tracking-wider text-white/30 uppercase sm:hidden">
                   {project.category}
                 </span>
               </div>
 
-              <div className="mt-auto">
-                <h3 className="mb-3 text-3xl font-bold text-white transition-colors group-hover:text-primary md:text-4xl">
+              <div className="flex-1">
+                <div className="mb-1 hidden sm:block">
+                  <span className="text-primary/70 text-[10px] font-semibold tracking-[0.3em] uppercase">
+                    {project.category}
+                  </span>
+                </div>
+                <h3 className="group-hover:text-primary text-xl font-bold text-white transition-colors sm:text-2xl">
                   {project.title}
                 </h3>
-
-                <p className="mb-6 max-w-sm text-sm leading-relaxed text-white/35">
+                <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/40 sm:mt-2">
                   {project.description}
                 </p>
+              </div>
 
-                <div className="mb-6 flex flex-wrap gap-2">
+              <div className="flex flex-wrap items-center gap-2 sm:flex-shrink-0 sm:flex-col sm:items-end sm:gap-3">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md bg-white/[0.03] px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-white/25 transition-colors group-hover:text-white/50"
+                      className="rounded-md bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-white/25 transition-colors group-hover:text-white/45"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary opacity-0 transition-all duration-300 group-hover:opacity-100">
-                    View Case Study
-                  </span>
-                  <span className="card-arrow text-lg text-primary opacity-40 transition-all duration-300">
+                <span className="text-primary/50 ml-auto flex items-center gap-1 text-xs font-semibold opacity-0 transition-all duration-300 group-hover:gap-2 group-hover:opacity-100 sm:ml-0">
+                  {project.link !== '#' ? 'Visit' : 'Details'}
+                  <span className="transition-transform group-hover:translate-x-0.5">
                     &rarr;
                   </span>
-                </div>
+                </span>
               </div>
-
-              <div className="absolute -bottom-4 -right-4 text-[120px] font-black leading-none text-white/[0.015] select-none">
-                {String(i + 1).padStart(2, '0')}
-              </div>
-            </div>
+            </a>
           ))}
 
-          <Magnetic strength={0.2}>
-            <div className="mr-8 flex h-[420px] w-[280px] flex-shrink-0 cursor-pointer flex-col items-center justify-center rounded-3xl border border-dashed border-white/[0.05] bg-transparent transition-colors hover:border-primary/20 md:h-[500px] md:w-[320px]">
-              <span className="mb-3 text-4xl text-white/15">+</span>
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/20">
-                More Coming
-              </span>
-            </div>
-          </Magnetic>
+          <a
+            href="/Supriadi-CV-2026.pdf"
+            download
+            className="group hover:border-primary/25 mt-6 flex items-center justify-center gap-3 rounded-2xl border border-dashed border-white/[0.06] bg-transparent px-8 py-5 transition-colors"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="group-hover:text-primary/60 text-white/20 transition-colors"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span className="group-hover:text-primary/70 text-xs font-semibold tracking-[0.3em] text-white/25 uppercase transition-colors">
+              Download Resume PDF
+            </span>
+          </a>
         </div>
       </div>
     </section>

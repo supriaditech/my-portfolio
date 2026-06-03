@@ -97,7 +97,7 @@ export default function ContactSection() {
         <div className="contact-label flex items-center gap-3 text-white/25">
           <div className="h-px w-8 bg-white/20" />
           <span className="text-[10px] font-medium tracking-[0.5em] uppercase">
-            05 / Contact
+            06 / Contact
           </span>
         </div>
       </div>
@@ -105,7 +105,7 @@ export default function ContactSection() {
       <div
         className="absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full opacity-[0.03] blur-[120px]"
         style={{
-          background: 'radial-gradient(circle, #913B28 0%, transparent 70%)',
+          background: 'radial-gradient(circle, #6366F1 0%, transparent 70%)',
         }}
       />
 
@@ -136,10 +136,10 @@ export default function ContactSection() {
                   Email
                 </p>
                 <a
-                  href="mailto:hello@portfolio.dev"
+                  href="mailto:Supriadi.tech@gmail.com"
                   className="group-hover:text-primary inline-block text-xl text-white/60 transition-all duration-300 group-hover:underline"
                 >
-                  hello@portfolio.dev
+                  Supriadi.tech@gmail.com
                 </a>
               </div>
 
@@ -158,14 +158,28 @@ export default function ContactSection() {
                 </p>
                 <div className="flex gap-5">
                   {[
-                    { label: 'GH', name: 'GitHub' },
-                    { label: 'LI', name: 'LinkedIn' },
-                    { label: 'TW', name: 'Twitter' },
-                    { label: 'DR', name: 'Dribbble' },
+                    {
+                      label: 'GH',
+                      name: 'GitHub',
+                      href: 'https://github.com/supriaditech',
+                    },
+                    {
+                      label: 'LI',
+                      name: 'LinkedIn',
+                      href: 'https://www.linkedin.com/in/supriaditech/',
+                    },
+                    {
+                      label: 'WA',
+                      name: 'WhatsApp',
+                      href: 'https://wa.me/6282277280453',
+                    },
+                    { label: 'DR', name: 'Dribbble', href: '#' },
                   ].map((social) => (
                     <Magnetic key={social.name} strength={0.25}>
                       <a
-                        href="#"
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hover:border-primary/30 hover:text-primary flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.06] text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(145,59,40,0.1)]"
                       >
                         {social.label}

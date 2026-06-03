@@ -20,14 +20,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Frontend Developer',
+  title: 'Supriadi | Frontend Developer',
   description:
-    'Professional frontend developer portfolio showcasing modern web experiences with Next.js, GSAP, and TypeScript.',
-  keywords: ['frontend', 'developer', 'portfolio', 'react', 'nextjs', 'gsap'],
+    'Professional frontend developer portfolio by Supriadi — crafting modern web experiences with Next.js, GSAP, and TypeScript.',
+  keywords: ['supriadi', 'frontend', 'developer', 'portfolio', 'react', 'nextjs', 'gsap'],
   openGraph: {
-    title: 'Portfolio | Frontend Developer',
-    description:
-      'Professional frontend developer portfolio showcasing modern web experiences.',
+    title: 'Supriadi | Frontend Developer',
+    description: 'Professional frontend developer portfolio by Supriadi.',
     type: 'website',
   },
 };
