@@ -7,17 +7,17 @@ import ProjectsSection from '@components/HomePages/ProjectsSection';
 import ContactSection from '@components/HomePages/ContactSection';
 import Footer from '@components/Layout/Footer';
 
+import MasterLayout from '@components/Layout/MasterLayout';
+
 export default function Home() {
   return (
-    <div className="bg-black">
-      <Navbar />
+    <MasterLayout>
       <HeroSection />
       <AboutSection />
       <WorkExperienceSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
-      <Footer />
-    </div>
+    </MasterLayout>
   );
 }

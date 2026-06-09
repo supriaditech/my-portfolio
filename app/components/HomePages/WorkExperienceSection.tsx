@@ -8,12 +8,43 @@ import TextReveal from '../Atoms/TextReveal';
 
 const EXPERIENCES = [
   {
+    company: 'PT Code Development Indonesia',
+    location: 'Jakarta',
+    role: 'Frontend Developer',
+    period: 'Mar 2026 \u2013 Present',
+    projects: [
+      {
+        id: 1,
+        route:
+          'https://play.google.com/store/apps/details?id=com.telkomsel.telkomselcm&hl=en-US&pli=1',
+        label: 'My Telkomsel',
+      },
+    ],
+    highlights: [
+      'Developed My Telkomsel mini app using Tencent Mini App framework with Taro.js for cross-platform compatibility.',
+      'Optimized code management practices to align with Tencent Mini App standards, ensuring maximum efficiency and maintainability.',
+      'Managed global state using Zustand and built responsive UIs with Tailwind CSS within the Taro.js ecosystem.',
+    ],
+  },
+
+  {
     company: 'PT. Permata Azzuri Sehat',
     location: 'Jakarta',
     role: 'Frontend Developer',
     period: 'Mar 2025 \u2013 Present',
-    projects:
-      'klinikme.com \u00b7 helloklinikme.com \u00b7 permataazzurisehat.com',
+    projects: [
+      { id: 2, route: 'https://klinikme.com/', label: 'klinikme.com' },
+      {
+        id: 3,
+        route: 'https://helloklinikme.com/',
+        label: 'helloklinikme.com',
+      },
+      {
+        id: 4,
+        route: 'https://permataazzurisehat.com/',
+        label: 'permataazzurisehat.com',
+      },
+    ],
     highlights: [
       'Spearheaded legacy code migration from JavaScript to TypeScript and Next.js version upgrades.',
       'Implemented SWR for real-time data management and caching; decoupled business logic into Custom Hooks.',
@@ -23,10 +54,17 @@ const EXPERIENCES = [
   },
   {
     company: 'PT. Indako Trading Coy',
-    location: 'Remote',
+    location: 'Medan',
     role: 'Mobile Developer',
     period: 'Jan 2025 \u2013 Feb 2025',
-    projects: 'DarkoHr App (PlayStore)',
+    projects: [
+      {
+        id: 5,
+        route:
+          'https://play.google.com/store/apps/details?id=com.darkotech.hr&hl=id',
+        label: 'DarkoHr App',
+      },
+    ],
     highlights: [
       'Designed API Contracts and built REST APIs using Laravel for Organization & Announcement features.',
       'Developed Splash Screen, Tour App, and UI Redesign for the DarkoHr React Native application.',
@@ -34,11 +72,24 @@ const EXPERIENCES = [
   },
   {
     company: 'PT. Seindo Travel',
-    location: 'Remote',
+    location: 'Medan',
     role: 'Frontend Developer',
     period: 'Dec 2022 \u2013 Dec 2024',
-    projects:
-      'seindotravel.com \u00b7 seindotransport.com \u00b7 bemore.id \u00b7 Seindo Travel App',
+    projects: [
+      {
+        id: 6,
+        route: 'https://www.seindotravel.co.id/',
+        label: 'seindotravel.com',
+      },
+      { id: 7, route: '', label: 'seindotransport.com' },
+      { id: 8, route: 'https://www.bemore.id/', label: 'bemore.id' },
+      {
+        id: 9,
+        route:
+          'https://play.google.com/store/apps/details?id=com.seindogroup.seindotravel&hl=en-US',
+        label: 'Seindo Travel App',
+      },
+    ],
     highlights: [
       'Integrated Midtrans & Xendit payment gateways using SWR Mutation for real-time status updates.',
       'Designed structured Git Branching strategy for the team, significantly minimizing merge conflicts.',
@@ -125,7 +176,7 @@ export default function WorkExperienceSection() {
       </div>
 
       <div
-        className="absolute top-1/3 -right-40 h-[600px] w-[600px] translate-x-1/2 rounded-full opacity-[0.02] blur-[120px]"
+        className="absolute top-1/3 -right-40 h-150 w-150 translate-x-1/2 rounded-full opacity-[0.02] blur-[120px]"
         style={{
           background: 'radial-gradient(circle, #6366F1 0%, transparent 70%)',
         }}
@@ -149,13 +200,13 @@ export default function WorkExperienceSection() {
         <div className="exp-cards relative">
           <div
             ref={lineRef}
-            className="from-primary/50 absolute top-0 left-0 hidden h-full w-px bg-gradient-to-b via-white/[0.06] to-transparent lg:block"
+            className="from-primary/50 absolute top-0 left-0 hidden h-full w-px bg-linear-to-b via-white/[0.06] to-transparent lg:block"
           />
 
           <div className="space-y-16 lg:space-y-24">
             {EXPERIENCES.map((exp, i) => (
               <div key={i} className="exp-card relative lg:pl-16">
-                <div className="border-primary absolute top-1.5 -left-[5px] hidden h-2.5 w-2.5 rounded-full border-2 bg-black lg:block" />
+                <div className="border-primary absolute top-1.5 -left-1.25 hidden h-2.5 w-2.5 rounded-full border-2 bg-black lg:block" />
 
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-3">
                   <div>
@@ -178,7 +229,25 @@ export default function WorkExperienceSection() {
 
                 <p className="mb-5 text-[13px] font-medium tracking-wider text-white/15 uppercase">
                   Key Projects:{' '}
-                  <span className="text-white/35">{exp.projects}</span>
+                  <span className="text-white/35">
+                    {exp.projects.map((p, idx) => (
+                      <span key={p.id}>
+                        {idx > 0 && ' · '}
+                        {p.route ? (
+                          <a
+                            href={p.route}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition-colors hover:text-white/70"
+                          >
+                            {p.label}
+                          </a>
+                        ) : (
+                          p.label
+                        )}
+                      </span>
+                    ))}
+                  </span>
                 </p>
 
                 <ul className="space-y-3">
@@ -187,7 +256,7 @@ export default function WorkExperienceSection() {
                       key={j}
                       className="exp-highlight flex gap-3 text-sm leading-relaxed text-white/45"
                     >
-                      <span className="bg-primary/40 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full" />
+                      <span className="bg-primary/40 mt-1.5 h-1 w-1 shrink-0 rounded-full" />
                       {h}
                     </li>
                   ))}

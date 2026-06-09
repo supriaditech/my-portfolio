@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { IoClose, IoMenu } from 'react-icons/io5';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -88,7 +89,7 @@ export default function Navbar() {
 
     tl.set(menuRef.current, { display: 'flex' })
       .to(menuBgRef.current, {
-        scale: 30,
+        scale: 100,
         duration: 0.8,
         ease: 'power3.inOut',
       })
@@ -170,7 +171,7 @@ export default function Navbar() {
     <>
       <nav
         ref={navbarRef}
-        className="fixed top-0 right-0 left-0 z-[100] w-full border-transparent transition-all duration-300"
+        className="fixed top-0 right-0 left-0 z-100 w-full border-transparent transition-all duration-300"
       >
         <div
           ref={navInnerRef}
@@ -181,7 +182,7 @@ export default function Navbar() {
             onClick={(e) => handleNavClick(e, '#home')}
             className="group relative"
           >
-            <span className="from-primary to-primary relative z-10 bg-gradient-to-r via-sky-400 bg-[length:200%_100%] bg-clip-text text-lg font-bold text-transparent transition-all duration-500 group-hover:bg-right sm:text-xl">
+            <span className="from-primary to-primary relative z-10 bg-linear-to-r via-sky-400 bg-size-[200%_100%] bg-clip-text text-lg font-bold text-transparent transition-all duration-500 group-hover:bg-right sm:text-xl">
               Supriadi
             </span>
           </a>
@@ -234,29 +235,25 @@ export default function Navbar() {
 
           <button
             onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
-            className="group relative z-[200] flex h-12 w-12 items-center justify-center lg:hidden"
+            className="group relative z-20 flex h-12 w-12 items-center justify-center lg:hidden"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             <div className="relative flex h-5 w-7 flex-col justify-between">
-              <span
-                className={`block h-px w-full origin-left bg-white transition-all duration-300 ${
-                  isOpen
-                    ? 'translate-x-px scale-x-110 rotate-45'
-                    : 'group-hover:scale-x-75'
-                }`}
-              />
-              <span
-                className={`block h-px w-full bg-white transition-all duration-300 ${
-                  isOpen ? 'scale-x-0 opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`block h-px w-full origin-left bg-white transition-all duration-300 ${
-                  isOpen
-                    ? '-translate-x-px scale-x-110 -rotate-45'
-                    : 'group-hover:scale-x-75'
-                }`}
-              />
+              {!isOpen ? (
+                <IoMenu
+                  size={24}
+                  color="white"
+                  className="group-hover:scale-x-75"
+                  onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+                />
+              ) : (
+                <IoClose
+                  size={24}
+                  color="white"
+                  className="group-hover:scale-x-75"
+                  onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+                />
+              )}
             </div>
           </button>
         </div>
@@ -264,15 +261,24 @@ export default function Navbar() {
 
       <div
         ref={menuRef}
-        className="fixed inset-0 z-[150] hidden items-center justify-center"
+        className="fixed inset-0 z-150 hidden items-center justify-center"
         style={{ display: 'none' }}
       >
         <div
           ref={menuBgRef}
-          className="bg-primary absolute top-6 right-6 h-6 w-6 scale-0 rounded-full"
-          style={{ transformOrigin: 'center center' }}
+          className="from-primary to-primary absolute top-6 right-6 h-6 w-6 scale-0 rounded-full bg-linear-to-r via-sky-800"
+          style={{
+            transformOrigin: 'center center',
+          }}
         />
-
+        <div className="absolute top-8 right-9 z-99">
+          <IoClose
+            size={24}
+            color="white"
+            className="group-hover:scale-x-75"
+            onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+          />
+        </div>
         <nav className="relative z-10 flex flex-col items-center gap-10">
           {NAV_LINKS.map((link, i) => (
             <a
@@ -282,7 +288,7 @@ export default function Navbar() {
               }}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href, true)}
-              className="text-4xl font-extrabold tracking-widest text-white uppercase transition-colors hover:text-amber-300 sm:text-5xl"
+              className="text-xl font-extrabold tracking-widest text-white uppercase transition-colors hover:text-amber-300 sm:text-5xl"
             >
               {link.label}
             </a>

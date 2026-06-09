@@ -8,43 +8,40 @@ import TextReveal from '../Atoms/TextReveal';
 
 const SKILL_CATEGORIES = [
   {
-    title: 'Frontend Core',
-    icon: '▸',
+    title: 'Frontend',
     skills: [
-      { name: 'React / Next.js', level: 'Expert' },
+      { name: 'React.js / Next.js', level: 'Expert' },
+      { name: 'React Native', level: 'Proficient' },
       { name: 'TypeScript', level: 'Expert' },
       { name: 'Tailwind CSS', level: 'Expert' },
-      { name: 'JavaScript (ES6+)', level: 'Expert' },
+      { name: 'GSAP (Animation)', level: 'Advanced' },
+      { name: 'React Hook Form', level: 'Advanced' },
     ],
   },
   {
-    title: 'Animation & UI',
-    icon: '▸',
+    title: 'Backend',
     skills: [
-      { name: 'GSAP / Framer Motion', level: 'Expert' },
-      { name: 'CSS Animations', level: 'Advanced' },
-      { name: 'Responsive Design', level: 'Expert' },
-      { name: 'Figma to Code', level: 'Advanced' },
-    ],
-  },
-  {
-    title: 'Backend & API',
-    icon: '▸',
-    skills: [
-      { name: 'Node.js / Express', level: 'Advanced' },
-      { name: 'REST API / GraphQL', level: 'Advanced' },
-      { name: 'Next.js API Routes', level: 'Advanced' },
+      { name: 'NestJS', level: 'Advanced' },
+      { name: 'Laravel', level: 'Proficient' },
+      { name: 'RESTful API', level: 'Advanced' },
       { name: 'Prisma / ORM', level: 'Proficient' },
     ],
   },
   {
-    title: 'Database & DevOps',
-    icon: '▸',
+    title: 'State & Data',
     skills: [
-      { name: 'PostgreSQL / MySQL', level: 'Advanced' },
-      { name: 'MongoDB', level: 'Proficient' },
-      { name: 'Git / GitHub', level: 'Expert' },
-      { name: 'Vercel / CI/CD', level: 'Advanced' },
+      { name: 'Zustand', level: 'Expert' },
+      { name: 'SWR', level: 'Expert' },
+      { name: 'Redux', level: 'Proficient' },
+    ],
+  },
+  {
+    title: 'DevOps & Infra',
+    skills: [
+      { name: 'Docker', level: 'Proficient' },
+      { name: 'VPS (AWS / Alibaba / Contabo)', level: 'Proficient' },
+      { name: 'Nginx', level: 'Proficient' },
+      { name: 'GitHub Actions (CI/CD)', level: 'Proficient' },
     ],
   },
 ];
@@ -56,20 +53,12 @@ const LEVEL_COLORS: Record<string, string> = {
 };
 
 const OTHER_TOOLS = [
-  'Redux / Zustand',
-  'React Query',
-  'Zod',
-  'Jest / Testing',
-  'Storybook',
-  'Docker',
-  'Redis',
-  'Stripe',
-  'WebSocket',
-  'PWA',
-  'SEO',
-  'A11y',
-  'Performance',
-  'Headless CMS',
+  'OpenAI API',
+  'Midtrans & Xendit',
+  'OpenStreetMap',
+  'Git (Branching Strategy)',
+  'Postman',
+  'Figma',
 ];
 
 export default function SkillsSection() {
@@ -156,7 +145,7 @@ export default function SkillsSection() {
       </div>
 
       <div
-        className="absolute top-0 right-0 h-[700px] w-[700px] translate-x-1/3 rounded-full opacity-[0.02] blur-[120px]"
+        className="absolute top-0 right-0 h-175 w-175 translate-x-1/3 rounded-full opacity-[0.02] blur-[120px]"
         style={{
           background: 'radial-gradient(circle, #6366F1 0%, transparent 70%)',
         }}
@@ -186,10 +175,7 @@ export default function SkillsSection() {
               }}
               className="group rounded-2xl border border-white/[0.04] bg-white/[0.01] p-6 backdrop-blur-sm transition-all duration-500 hover:border-white/[0.08] hover:bg-white/[0.02]"
             >
-              <div className="mb-6 flex items-center gap-2">
-                <span className="text-primary text-xs opacity-60">
-                  {category.icon}
-                </span>
+              <div className="mb-6">
                 <h3 className="text-xs font-bold tracking-[0.25em] text-white/50 uppercase">
                   {category.title}
                 </h3>
