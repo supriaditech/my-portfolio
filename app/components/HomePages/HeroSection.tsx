@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextRepulsion from '../Atoms/TextScatter';
 import TextReveal from '../Atoms/TextReveal';
 import Magnetic from '../Atoms/Magnetic';

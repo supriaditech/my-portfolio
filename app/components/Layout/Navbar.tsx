@@ -135,15 +135,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
-      openMenu();
-    }
     return () => {
-      if (tlRef.current) {
-        tlRef.current.kill();
-      }
+      tlRef.current?.kill();
+      document.body.style.overflow = '';
     };
-  }, [isOpen, openMenu]);
+  }, []);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -234,7 +230,7 @@ export default function Navbar() {
           </div>
 
           <button
-            onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+            onClick={() => (isOpen ? closeMenu() : openMenu())}
             className="group relative z-20 flex h-12 w-12 items-center justify-center lg:hidden"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
@@ -244,14 +240,14 @@ export default function Navbar() {
                   size={24}
                   color="white"
                   className="group-hover:scale-x-75"
-                  onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+                  onClick={() => (isOpen ? closeMenu() : openMenu())}
                 />
               ) : (
                 <IoClose
                   size={24}
                   color="white"
                   className="group-hover:scale-x-75"
-                  onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+                  onClick={() => (isOpen ? closeMenu() : openMenu())}
                 />
               )}
             </div>
@@ -276,7 +272,7 @@ export default function Navbar() {
             size={24}
             color="white"
             className="group-hover:scale-x-75"
-            onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+            onClick={() => (isOpen ? closeMenu() : openMenu())}
           />
         </div>
         <nav className="relative z-10 flex flex-col items-center gap-10">

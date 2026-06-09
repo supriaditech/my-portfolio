@@ -3,7 +3,6 @@
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextReveal from '../Atoms/TextReveal';
 import Magnetic from '../Atoms/Magnetic';
 

@@ -10,15 +10,12 @@ const eslintConfig = [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
 
       '@typescript-eslint/no-unused-vars': [
-        'warn',
+        'error',
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
         },
       ],
-      '@typescript-eslint/ban-ts-comment': 'off',
-      'react-hooks/refs': 'off',
-      'react-hooks/set-state-in-effect': 'off',
     },
   },
 
