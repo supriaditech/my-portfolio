@@ -43,6 +43,6 @@ export function createUser(user: User): void {
 }
 
 export function stripPassword(user: User): UserWithoutPassword {
-  const { password, ...rest } = user;
+  const { password: _password, ...rest } = user;
   return rest;
 }

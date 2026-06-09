@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TextReveal from '../Atoms/TextReveal';
 
 const PROJECTS = [
@@ -98,9 +97,7 @@ export default function ProjectsSection() {
     { scope: sectionRef }
   );
 
-  const { contextSafe } = useGSAP({ scope: sectionRef });
-
-  const handleCardEnter = contextSafe((index: number) => {
+  const handleCardEnter = (index: number) => {
     const card = cardRefs.current[index];
     if (!card) return;
     gsap.to(card, {
@@ -110,9 +107,9 @@ export default function ProjectsSection() {
       duration: 0.35,
       ease: 'power2.out',
     });
-  });
+  };
 
-  const handleCardLeave = contextSafe((index: number) => {
+  const handleCardLeave = (index: number) => {
     const card = cardRefs.current[index];
     if (!card) return;
     gsap.to(card, {
@@ -122,7 +119,7 @@ export default function ProjectsSection() {
       duration: 0.35,
       ease: 'power2.out',
     });
-  });
+  };
 
   return (
     <section
