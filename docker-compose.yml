@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-portfolio
+    restart: unless-stopped
+    ports:
+      - '0210:3000'
+    env_file:
+      - .env.production

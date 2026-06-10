@@ -102,7 +102,7 @@ export default function ContactSection() {
       </div>
 
       <div
-        className="absolute -right-40 -bottom-40 h-[600px] w-[600px] rounded-full opacity-[0.03] blur-[120px]"
+        className="absolute -right-40 -bottom-40 h-150 w-150 rounded-full opacity-[0.03] blur-[120px]"
         style={{
           background: 'radial-gradient(circle, #6366F1 0%, transparent 70%)',
         }}
@@ -179,7 +179,7 @@ export default function ContactSection() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:border-primary/30 hover:text-primary flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.06] text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(145,59,40,0.1)]"
+                        className="hover:border-primary/30 hover:text-primary flex h-11 w-11 items-center justify-center rounded-full border border-white/6 text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(145,59,40,0.1)]"
                       >
                         {social.label}
                       </a>
@@ -189,7 +189,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/[0.04] bg-white/[0.01] p-8 backdrop-blur-sm">
+            <div className="rounded-3xl border border-white/4 bg-white/1 p-8 backdrop-blur-sm">
               <p className="text-sm leading-relaxed text-white/30 italic">
                 &ldquo;Currently available for freelance projects and full-time
                 opportunities. Let&apos;s build something great together!&rdquo;
@@ -217,7 +217,7 @@ export default function ContactSection() {
                   value={formState.name}
                   onChange={handleChange}
                   required
-                  className="focus:border-primary/50 w-full border-b border-white/[0.06] bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
+                  className="focus:border-primary/50 w-full border-b border-white/6 bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
                   placeholder="John Doe"
                 />
               </div>
@@ -236,7 +236,7 @@ export default function ContactSection() {
                   value={formState.email}
                   onChange={handleChange}
                   required
-                  className="focus:border-primary/50 w-full border-b border-white/[0.06] bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
+                  className="focus:border-primary/50 w-full border-b border-white/6 bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
                   placeholder="john@example.com"
                 />
               </div>
@@ -256,7 +256,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="focus:border-primary/50 w-full resize-none border-b border-white/[0.06] bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
+                className="focus:border-primary/50 w-full resize-none border-b border-white/6 bg-transparent px-1 py-3.5 text-white placeholder-white/10 transition-all duration-300 outline-none"
                 placeholder="Tell me about your project..."
               />
             </div>

@@ -208,7 +208,7 @@ export default function HeroSection() {
               Available for projects
             </span>
 
-            <div className="hero-line from-primary mb-8 h-px w-24 bg-gradient-to-r to-transparent" />
+            <div className="hero-line from-primary mb-8 h-px w-24 bg-linear-to-r to-transparent" />
 
             <p className="hero-greeting font-montserrat text-lg font-medium tracking-[0.3em] text-white/50 uppercase md:text-xl">
               Hey, I&apos;m
@@ -305,7 +305,7 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-number absolute right-10 bottom-12 hidden lg:block">
-            <span className="text-[140px] leading-none font-black text-white/[0.03]">
+            <span className="text-[140px] leading-none font-black text-white/3">
               01
             </span>
           </div>
@@ -313,7 +313,7 @@ export default function HeroSection() {
 
         <div className="hero-scroll-hint absolute bottom-8 left-1/2 z-20 -translate-x-1/2 cursor-pointer lg:hidden">
           <div className="flex flex-col items-center gap-3">
-            <div className="h-10 w-px bg-gradient-to-b from-white/30 to-transparent" />
+            <div className="h-10 w-px bg-linear-to-b from-white/30 to-transparent" />
             <span className="text-[10px] tracking-[0.4em] text-white/20 uppercase">
               Scroll
             </span>

@@ -29,5 +29,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+
+  "tailwindCSS.lint.cssConflict": "ignore"
 }
