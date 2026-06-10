@@ -102,6 +102,6 @@ jobs:
             git pull origin main
             echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u supriaditech --password-stdin
             docker compose pull
+            pkill -9 -f "node server.js" || true
             docker rm -f my-portfolio || true
-            docker container prune -f
             docker compose up -d
