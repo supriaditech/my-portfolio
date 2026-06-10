@@ -179,7 +179,7 @@ export default function Navbar() {
             className="group relative"
           >
             <span className="from-primary to-primary relative z-10 bg-linear-to-r via-sky-400 bg-size-[200%_100%] bg-clip-text text-lg font-bold text-transparent transition-all duration-500 group-hover:bg-right sm:text-xl">
-              Supriadi
+              adibeast
             </span>
           </a>
 
