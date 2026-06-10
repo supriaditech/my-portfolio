@@ -1,8 +1,7 @@
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/supriaditech/my-portfolio:latest
+    container_name: my-portfolio
     restart: unless-stopped
     init: true
     stop_grace_period: 5s
