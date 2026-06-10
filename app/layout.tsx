@@ -20,14 +20,73 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Supriadi | Frontend Developer',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://supriadi.tech'
+  ),
+  title: {
+    default: 'Supriadi | Frontend Developer',
+    template: '%s | Supriadi',
+  },
   description:
-    'Professional frontend developer portfolio by Supriadi — crafting modern web experiences with Next.js, GSAP, and TypeScript.',
-  keywords: ['supriadi', 'frontend', 'developer', 'portfolio', 'react', 'nextjs', 'gsap'],
+    'Frontend Developer portfolio of Supriadi — 3+ years crafting modern web & mobile experiences with Next.js, React Native, TypeScript, NestJS, and GSAP animations.',
+  keywords: [
+    'Supriadi',
+    'frontend developer',
+    'Next.js developer',
+    'React Native developer',
+    'TypeScript',
+    'portfolio',
+    'NestJS',
+    'fullstack developer Indonesia',
+    'web developer',
+  ],
+  authors: [{ name: 'Supriadi', url: 'https://supriadi.tech' }],
+  creator: 'Supriadi',
+  applicationName: 'Supriadi Portfolio',
+  generator: 'Next.js',
+  referrer: 'origin-when-cross-origin',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'Supriadi | Frontend Developer',
-    description: 'Professional frontend developer portfolio by Supriadi.',
     type: 'website',
+    locale: 'en_US',
+    url: 'https://supriadi.tech',
+    siteName: 'Supriadi Portfolio',
+    title: 'Supriadi | Frontend Developer',
+    description:
+      'Frontend Developer portfolio — crafting modern web & mobile experiences with Next.js, React Native, TypeScript, and GSAP.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Supriadi — Frontend Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Supriadi | Frontend Developer',
+    description:
+      'Frontend Developer portfolio — crafting modern web & mobile experiences with Next.js, React Native, TypeScript, and GSAP.',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://supriadi.tech',
   },
 };
 
