@@ -70,5 +70,7 @@ jobs:
           script: |
             cd ~/my-portfolio/my-portfolio
             git pull origin main
+            pkill -9 -f "node server.js" || true
             docker rm -f my-portfolio || true
+            docker container prune -f
             docker compose up -d --build
