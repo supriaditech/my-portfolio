@@ -5,7 +5,10 @@ services:
       dockerfile: Dockerfile
     container_name: my-portfolio
     restart: unless-stopped
+    init: true
+    stop_grace_period: 5s
     ports:
       - '0210:3000'
     env_file:
-      - .env.production
+      - path: .env.production
+        required: false
