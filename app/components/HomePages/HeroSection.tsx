@@ -215,7 +215,7 @@ export default function HeroSection() {
             </p>
 
             <TextRepulsion
-              text="Supriadi"
+              text="adi"
               strength={1400}
               radius={280}
               className="font-montserrat text-5xl leading-[1.05] font-extrabold text-white sm:text-7xl md:text-9xl"
